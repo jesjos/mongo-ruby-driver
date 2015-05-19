@@ -17,8 +17,12 @@ require 'socket'
 
 module BSON
 
-  def BSON::ObjectId(s)
-    ObjectId.from_string(s)
+  def BSON::ObjectId(object)
+    if object.is_a?(BSON::ObjectId)
+      object
+    else
+      ObjectId.from_string(object.to_s)
+    end
   end
 
   # Generates MongoDB object ids.

@@ -73,7 +73,8 @@ class ObjectIdTest < Test::Unit::TestCase
     assert_equal @obj.to_s, s
   end
 
-  def test_method
+  def test_conversion_method
+    assert_equal @obj, BSON::ObjectId(@obj)
     assert_equal ObjectId.from_string(@obj.to_s), BSON::ObjectId(@obj.to_s)
   end
 
